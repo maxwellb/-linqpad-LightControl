@@ -8,3 +8,17 @@ The first time you run the program, an application key will attempt to be genera
 
 Change `"Office"` to whatever room you want to control, and start using methods of `LightControl`.
 
+## Example
+
+```csharp
+async Task Main()
+{
+	var L = new LightControl("Office");
+
+	Hue hue = Hue.Blue;
+	await L.SetHueAsync(hue, 254, 3000);
+	await L.DimAsync(80);
+	await (await (await L.SwitchAsync(true)).SwitchAsync(false)).SwitchAsync(true);
+
+}
+```
